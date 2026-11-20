@@ -2,7 +2,7 @@
 
 **AI analytics for the CCTV a border post already has.** IBVAP turns ordinary IP / RTSP cameras into a monitored, evidence-grade surveillance network: it detects and tracks people and vehicles, reads number plates, recognises intrusion and suspicious behaviour, scores the threat per sector, runs an incident workflow, and makes every record tamper-evident with a hash chain plus Ed25519 signatures.
 
-Team **KavachX**. CodeQuest: National Tech Hackathon 2026, Final Build & Innovation Showcase.
+Team **KavachX** (Swastik Mitra, Sunanda Samanta). CodeQuest: National Tech Hackathon 2026, Final Build & Innovation Showcase.
 
 > **Live demo:** [ibvap-e0nn.onrender.com](https://ibvap-e0nn.onrender.com/) &nbsp;|&nbsp; **Demo video:** [youtu.be/ygBbFJ7840Q](https://youtu.be/ygBbFJ7840Q)
 >
