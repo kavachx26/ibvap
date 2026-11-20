@@ -1,0 +1,18 @@
+services:
+  ibvap:
+    build:
+      context: .
+      args:
+        WITH_YOLO: "0"     # set to "1" for YOLOv8 on real footage
+    container_name: ibvap
+    ports:
+      - "8000:8000"
+    environment:
+      IBVAP_API_KEY: ${IBVAP_API_KEY:-ibvap-demo-key-2026-CHANGE-ME}
+    volumes:
+      - ibvap-data:/app/data          # database, evidence frames, signing key
+      - ./samples:/app/samples:ro     # drop MP4s here to analyse them
+    restart: unless-stopped
+
+volumes:
+  ibvap-data:

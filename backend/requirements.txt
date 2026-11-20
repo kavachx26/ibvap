@@ -1,0 +1,24 @@
+# IBVAP v3 -- backend dependencies (Python 3.11 - 3.13)
+fastapi==0.141.1
+uvicorn[standard]==0.52.4
+python-multipart==0.0.20
+opencv-python-headless==4.13.0.92
+numpy>=1.26,<3
+scipy>=1.11
+scikit-learn>=1.4
+pydantic>=2.6
+cryptography>=42          # Ed25519 signed checkpoints + evidence bundles
+pytesseract>=0.3.10       # ANPR OCR; also needs the Tesseract binary (see README)
+httpx>=0.27               # FastAPI TestClient (tests)
+pytest>=8.0
+
+# RECOMMENDED: YOLOv8 for real footage (auto-detected, no code change).
+# Without it IBVAP falls back to the offline HOG + MOG2 floor.
+#   pip install ultralytics
+# ultralytics pulls in "opencv-python", which shadows the headless build and
+# breaks cv2.CascadeClassifier. setup.bat / run_local.sh run the fix for you:
+#   pip install --force-reinstall --no-deps opencv-python-headless==4.13.0.92
+#
+# OPTIONAL: EasyOCR as a second ANPR engine. Used only if its model files are
+# already in ~/.EasyOCR/model (IBVAP never downloads models mid-demo).
+#   pip install easyocr

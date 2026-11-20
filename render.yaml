@@ -1,0 +1,34 @@
+# Render Blueprint: New > Blueprint > connect this repository.
+# One Docker web service serves the API, WebSockets and dashboard from one URL.
+services:
+  - type: web
+    name: ibvap
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      # The dashboard signs in with this demo key automatically. Set your own
+      # value in the Render dashboard to lock the API; the dashboard will then
+      # ask for it once.
+      - key: IBVAP_API_KEY
+        value: ibvap-demo-key-2026-CHANGE-ME
+      # Free instances have 512 MB RAM: YOLOv8 (torch) does not fit, so the
+      # offline HOG + MOG2 detector is used for uploaded video.
+      - key: IBVAP_DETECTOR
+        value: hog
+      # Free instances also get only 0.1 CPU: one OpenCV thread, the person
+      # detector at 480 px on every 3rd frame, and a lower stream rate.
+      - key: IBVAP_STREAM_FPS
+        value: "6"
+      - key: IBVAP_CV_THREADS
+        value: "1"
+      - key: IBVAP_HOG_MAX_DIM
+        value: "480"
+      - key: IBVAP_HOG_EVERY
+        value: "3"
+      # Each Tesseract read is a separate process: read plates with 2 calls
+      # per vehicle instead of up to 30.
+      - key: IBVAP_ANPR_MODE
+        value: lite

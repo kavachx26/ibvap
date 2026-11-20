@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IBVAP Command Center</title>
+<meta name="description" content="IBVAP - Intelligent Border Video Analytics Platform. AI analytics for existing border CCTV.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 2 4 7v8c0 7.5 5.1 13.4 12 15 6.9-1.6 12-7.5 12-15V7z' fill='%2319c3a6'/%3E%3Ccircle cx='16' cy='15' r='5' fill='%230b1017'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/static/css/app.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2 4 5.5v6c0 5.2 3.4 9.4 8 10.5 4.6-1.1 8-5.3 8-10.5v-6z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+  <symbol id="i-radar" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 12 18.5 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3 2.5 20h19z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 10v4.5M12 17.2v.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-car" viewBox="0 0 24 24"><path d="M4 16v-4l2-5h12l2 5v4M3 16h18v3H3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="7.5" cy="16.5" r="1.3" fill="currentColor"/><circle cx="16.5" cy="16.5" r="1.3" fill="currentColor"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V4M4 20h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/><path d="M8 16v-5M12 16V8M16 16v-3" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+  <symbol id="i-film" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m10 9.5 5 2.5-5 2.5z" fill="currentColor"/></symbol>
+  <symbol id="i-cog" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2.8v2.6M12 18.6v2.6M21.2 12h-2.6M5.4 12H2.8M18.5 5.5l-1.8 1.8M7.3 16.7l-1.8 1.8M18.5 18.5l-1.8-1.8M7.3 7.3 5.5 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7z" fill="currentColor"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2.5v2M12 19.5v2M21.5 12h-2M4.5 12h-2M18.7 5.3l-1.4 1.4M6.7 17.3l-1.4 1.4M18.7 18.7l-1.4-1.4M6.7 6.7 5.3 5.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M10 20.5a2 2 0 0 0 4 0" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19.5h14" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M10 12h5M10 15.5h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-route" viewBox="0 0 24 24"><circle cx="6" cy="18" r="2.4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="18" cy="6" r="2.4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8.4 18H15a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h6.6" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+</svg>
+
+<div class="app" id="app">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <svg class="brand-mark"><use href="#i-shield"/></svg>
+      <div><div class="brand-name">IBVAP</div><div class="brand-sub">Border Video Analytics</div></div>
+    </div>
+    <nav class="nav" id="nav">
+      <a href="#command" data-view="command" class="active"><svg><use href="#i-radar"/></svg><span>Command Center</span></a>
+      <a href="#wall" data-view="wall"><svg><use href="#i-grid"/></svg><span>Camera Wall</span></a>
+      <a href="#incidents" data-view="incidents"><svg><use href="#i-alert"/></svg><span>Incidents</span><b class="nav-badge" id="navOpen">0</b></a>
+      <a href="#intel" data-view="intel"><svg><use href="#i-car"/></svg><span>Vehicle Intel</span></a>
+      <a href="#analytics" data-view="analytics"><svg><use href="#i-chart"/></svg><span>Analytics</span></a>
+      <a href="#audit" data-view="audit"><svg><use href="#i-lock"/></svg><span>Evidence &amp; Audit</span></a>
+      <a href="#sources" data-view="sources"><svg><use href="#i-film"/></svg><span>Video Sources</span></a>
+      <a href="#system" data-view="system"><svg><use href="#i-cog"/></svg><span>System &amp; Zones</span></a>
+    </nav>
+    <div class="sidebar-foot">
+      <button class="btn btn-accent btn-block" id="btnTour" type="button"><svg><use href="#i-play"/></svg>Guided demo</button>
+      <div class="foot-meta">Team KavachX &middot; v3.0</div>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <button class="icon-btn only-mobile" id="btnMenu" type="button" aria-label="Menu"><svg><use href="#i-grid"/></svg></button>
+      <div class="threat-pill" id="sitePill" title="Site threat level (worst camera, raised when several sectors are active)">
+        <span class="threat-dot"></span><span class="threat-label">SITE THREAT</span><b id="siteLevel">LOW</b><span class="threat-score" id="siteScore">0</span>
+      </div>
+      <div class="topbar-chips">
+        <span class="chip" id="chainChip" title="Evidence chain status"><svg><use href="#i-lock"/></svg><span id="chainText">Chain: checking</span></span>
+        <span class="chip" id="connChip"><span class="dot" id="connDot"></span><span id="connText">Connecting</span></span>
+      </div>
+      <div class="topbar-right">
+        <span class="clock" id="clock">--:--:--</span>
+        <button class="chip chip-btn" id="operatorChip" type="button" title="Operator name used in the chain of custody"><span class="avatar" id="opAvatar">DO</span><span id="opName">Duty Officer</span></button>
+        <button class="icon-btn" id="btnSound" type="button" title="Alert sound"><svg><use href="#i-bell"/></svg></button>
+        <button class="icon-btn" id="btnTheme" type="button" title="Toggle light / dark"><svg><use href="#i-sun"/></svg></button>
+      </div>
+    </header>
+
+    <main class="views">
+      <!-- COMMAND CENTER -->
+      <section class="view active" id="view-command">
+        <div class="kpis" id="kpis"></div>
+        <div class="cmd-grid">
+          <div class="panel feed-panel">
+            <div class="panel-head">
+              <div class="cam-tabs" id="camTabs"></div>
+              <div class="panel-tools">
+                <label class="toggle" title="Overlay movement heatmap"><input type="checkbox" id="tglHeat"><span>Heatmap</span></label>
+                <button class="btn btn-ghost btn-sm" id="btnSnapshot" type="button"><svg><use href="#i-download"/></svg>Frame</button>
+              </div>
+            </div>
+            <div class="feed" id="mainFeed">
+              <img id="feedImg" alt="Live analytics feed">
+              <canvas id="heatCanvas" class="heat"></canvas>
+              <div class="feed-empty" id="feedEmpty"><div class="spinner"></div><span>Connecting to camera</span></div>
+              <div class="feed-flash" id="feedFlash"></div>
+            </div>
+            <div class="feed-foot">
+              <div class="feed-meta" id="feedMeta"></div>
+              <div class="track-list" id="trackList"></div>
+            </div>
+          </div>
+          <div class="side-col">
+            <div class="panel stream-panel">
+              <div class="panel-head"><h3>Live alert stream <span class="muted" id="streamCount"></span></h3>
+                <div class="seg" id="sevFilter">
+                  <button data-sev="all" class="on" type="button">All</button><button data-sev="critical" type="button">Critical</button><button data-sev="high" type="button">High+</button>
+                </div>
+              </div>
+              <div class="alert-stream" id="alertStream"><div class="empty">Alerts from every camera appear here in real time.</div></div>
+            </div>
+            <div class="panel">
+              <div class="panel-head"><h3>Sector threat</h3><span class="muted small">decays over ~75 s; resolved alerts stop counting</span></div>
+              <div class="sector-list" id="sectorList"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CAMERA WALL -->
+      <section class="view" id="view-wall">
+        <div class="view-head"><div><h2>Camera wall</h2><p class="muted">Every site camera analysed at once. One pipeline per camera, shared by every viewer.</p></div></div>
+        <div class="wall" id="wall"></div>
+      </section>
+
+      <!-- INCIDENTS -->
+      <section class="view" id="view-incidents">
+        <div class="view-head">
+          <div><h2>Incidents</h2><p class="muted">Every alert is an incident with a status, an owner and a hash-chained custody trail.</p></div>
+          <div class="head-actions">
+            <button class="btn btn-ghost" id="btnBulkAck" type="button"><svg><use href="#i-check"/></svg>Acknowledge selected</button>
+            <a class="btn btn-ghost" id="btnShift" target="_blank" rel="noopener"><svg><use href="#i-doc"/></svg>Shift briefing</a>
+          </div>
+        </div>
+        <div class="filters">
+          <input type="search" id="fQ" placeholder="Search message or plate">
+          <select id="fSev"><option value="">All severities</option><option>critical</option><option>high</option><option>medium</option><option>low</option></select>
+          <select id="fStatus"><option value="">All statuses</option><option value="new">New</option><option value="acknowledged">Acknowledged</option><option value="investigating">Investigating</option><option value="escalated">Escalated</option><option value="resolved">Resolved</option><option value="false_positive">False positive</option></select>
+          <select id="fCam"><option value="">All cameras</option></select>
+          <select id="fType"><option value="">All types</option><option value="watchlist_match">Watchlist match</option><option value="unauthorized_crossing">Unauthorized crossing</option><option value="loitering">Loitering</option><option value="group_formation">Group / convoy</option><option value="erratic_motion">Erratic motion</option><option value="night_time_movement">Night movement</option></select>
+          <span class="muted small" id="incCount"></span>
+        </div>
+        <div class="panel table-panel">
+          <table class="table" id="incTable">
+            <thead><tr><th class="cb"><input type="checkbox" id="incAll" aria-label="Select all"></th><th>ID</th><th>Severity</th><th>Type</th><th>Description</th><th>Camera</th><th>Time</th><th>Status</th><th></th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- VEHICLE INTEL -->
+      <section class="view" id="view-intel">
+        <div class="view-head"><div><h2>Vehicle intelligence</h2><p class="muted">ANPR sightings from every camera, cross-camera trajectories and the watchlist.</p></div></div>
+        <div class="intel-grid">
+          <div class="panel">
+            <div class="panel-head"><h3>Plates seen</h3><input type="search" id="plateQ" class="input-sm" placeholder="Filter plates"></div>
+            <div class="plate-list" id="plateList"></div>
+          </div>
+          <div class="panel traj-panel">
+            <div class="panel-head"><h3 id="trajTitle">Trajectory</h3><span class="muted small" id="trajMeta">Select a plate to trace it across cameras</span></div>
+            <div class="traj-body">
+              <svg id="siteMap" class="site-map" viewBox="0 0 100 70" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Site map"></svg>
+              <ol class="timeline" id="trajTimeline"></ol>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel-head"><h3>Watchlist</h3><span class="muted small" id="wlCount"></span></div>
+            <form class="wl-form" id="wlForm">
+              <input id="wlPlate" placeholder="Plate e.g. MH12AB1234" required maxlength="20">
+              <input id="wlReason" placeholder="Reason" required maxlength="200">
+              <select id="wlPrio"><option value="high">High</option><option value="critical">Critical</option></select>
+              <button class="btn btn-accent" type="submit">Add</button>
+            </form>
+            <div class="wl-list" id="wlList"></div>
+            <div class="match-test">
+              <div class="small muted">OCR-tolerant matching: try a misread such as <code>WB74AK223I</code> or <code>W874AK2231</code></div>
+              <div class="row"><input id="mtInput" placeholder="Simulated OCR read"><button class="btn btn-ghost" id="mtBtn" type="button">Test match</button></div>
+              <div id="mtOut" class="small"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ANALYTICS -->
+      <section class="view" id="view-analytics">
+        <div class="view-head">
+          <div><h2>Analytics</h2><p class="muted">Operational picture across the site.</p></div>
+          <div class="seg" id="rangeSeg"><button data-min="15" type="button">15 min</button><button data-min="60" class="on" type="button">1 hour</button><button data-min="480" type="button">8 hours</button></div>
+        </div>
+        <div class="an-grid">
+          <div class="panel span-2"><div class="panel-head"><h3>Alerts over time, by severity</h3><div class="legend" id="tlLegend"></div></div><div class="chart" id="chTimeline"></div></div>
+          <div class="panel"><div class="panel-head"><h3>Alerts by type</h3></div><div class="chart" id="chTypes"></div></div>
+          <div class="panel"><div class="panel-head"><h3>Alerts by camera</h3></div><div class="chart" id="chCams"></div></div>
+          <div class="panel"><div class="panel-head"><h3>Incident status</h3></div><div class="chart" id="chStatus"></div></div>
+          <div class="panel"><div class="panel-head"><h3>Occupancy, <span id="occCamName">North Fence</span></h3><select id="occCam" class="input-sm"></select></div><div class="chart" id="chOcc"></div></div>
+        </div>
+      </section>
+
+      <!-- AUDIT -->
+      <section class="view" id="view-audit">
+        <div class="view-head">
+          <div><h2>Evidence &amp; audit</h2><p class="muted">Three independent layers make tampering detectable: a SHA-256 hash chain, row snapshots, and Ed25519-signed checkpoints whose key never lives in the database.</p></div>
+          <div class="head-actions">
+            <button class="btn btn-ghost" id="btnVerify" type="button"><svg><use href="#i-check"/></svg>Verify now</button>
+            <a class="btn btn-accent" id="btnIntegrityReport" target="_blank" rel="noopener" title="Printable, signed report of every tamper-evidence layer"><svg><use href="#i-doc"/></svg>Integrity report</a>
+          </div>
+        </div>
+        <div class="verify-cards" id="verifyCards"></div>
+        <div class="audit-grid">
+          <div class="panel">
+            <div class="panel-head"><h3>Live tamper demonstration</h3><span class="muted small">runs against a separate demo dataset</span></div>
+            <div class="attack-steps">
+              <div class="attack"><div class="attack-n">0</div><div><b>Seed a clean demo dataset</b><p class="muted small">Wipes tracking data, writes 4 alerts + 2 events, signs a checkpoint.</p></div><button class="btn btn-accent btn-sm" data-attack="seed" type="button">Seed</button></div>
+              <div class="attack"><div class="attack-n">1</div><div><b>Edit the visible table</b><p class="muted small">Downgrade a watchlist alert to "routine patrol". Chain untouched.</p></div><button class="btn btn-danger btn-sm" data-attack="attack1" type="button">Attack</button></div>
+              <div class="attack"><div class="attack-n">2</div><div><b>Rewrite one chained record</b><p class="muted small">Edit a record and recompute its own hash so it looks self-consistent.</p></div><button class="btn btn-danger btn-sm" data-attack="attack2" type="button">Attack</button></div>
+              <div class="attack"><div class="attack-n">3</div><div><b>Forge the whole chain</b><p class="muted small">Insider with full DB access: edit, recompute every later hash, patch the table. The plain chain is fooled.</p></div><button class="btn btn-danger btn-sm" data-attack="attack3" type="button">Attack</button></div>
+            </div>
+            <pre class="log" id="attackLog">Seed, then launch any attack. Re-seed between attacks.</pre>
+          </div>
+          <div class="panel">
+            <div class="panel-head"><h3>Verify an evidence bundle</h3></div>
+            <label class="dropzone" id="dropzone"><input type="file" id="bundleFile" accept=".zip" hidden>
+              <svg><use href="#i-download"/></svg><span><b>Drop a signed evidence ZIP</b> or click to choose</span><span class="muted small">Export one from any incident. Edit a file inside it and watch verification fail.</span></label>
+            <div id="bundleResult"></div>
+            <div class="keybox" id="keyBox"></div>
+          </div>
+          <div class="panel span-2">
+            <div class="panel-head"><h3>Chain explorer</h3><span class="muted small">newest first; each block commits to the one before it</span></div>
+            <div class="chain" id="chain"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SOURCES -->
+      <section class="view" id="view-sources">
+        <div class="view-head"><div><h2>Video sources</h2><p class="muted">Run the full real-detection pipeline (YOLOv8 + tracking + ANPR) on recorded footage or a live RTSP camera.</p></div></div>
+        <div class="src-grid">
+          <div class="panel">
+            <div class="panel-head"><h3>Sample footage</h3></div>
+            <div id="sampleList" class="sample-list"></div>
+            <label class="dropzone small-dz"><input type="file" id="uploadFile" accept="video/*" hidden><svg><use href="#i-film"/></svg><span><b>Upload a video</b> (MP4, AVI, MOV, MKV)</span></label>
+            <form class="rtsp-form" id="rtspForm">
+              <div class="small muted">Live IP camera (RTSP)</div>
+              <input id="rtspUrl" placeholder="rtsp://user:pass@192.168.1.64:554/stream1">
+              <button class="btn btn-ghost" type="submit">Connect</button>
+            </form>
+          </div>
+          <div class="panel feed-panel">
+            <div class="panel-head"><h3 id="replayTitle">Replay</h3><div class="panel-tools"><span class="chip" id="replayStat">idle</span><button class="btn btn-ghost btn-sm" id="btnStopReplay" type="button">Stop</button></div></div>
+            <div class="feed" id="replayFeed"><img id="replayImg" alt="Replay feed"><div class="feed-empty" id="replayEmpty"><span>Pick a sample or upload a video</span></div></div>
+            <div class="progress"><div id="replayProg"></div></div>
+            <div class="replay-alerts" id="replayAlerts"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SYSTEM -->
+      <section class="view" id="view-system">
+        <div class="view-head">
+          <div><h2>System &amp; zones</h2><p class="muted">Health of every component, and per-camera zone calibration.</p></div>
+          <div class="head-actions"><button class="btn btn-danger" id="btnReset" type="button">Reset tracking data</button></div>
+        </div>
+        <div class="sys-grid">
+          <div class="panel"><div class="panel-head"><h3>Components</h3></div><div id="sysComponents" class="sys-list"></div></div>
+          <div class="panel span-2">
+            <div class="panel-head"><h3>Zone calibration</h3>
+              <div class="panel-tools"><select id="calCam" class="input-sm"></select>
+                <div class="seg" id="calMode"><button data-mode="line" class="on" type="button">Fence line</button><button data-mode="zone" type="button">Restricted zone</button></div></div></div>
+            <div class="feed calib" id="calFeed"><img id="calImg" alt="Calibration frame"><canvas id="calCanvas"></canvas></div>
+            <div class="cal-bar">
+              <span class="muted small" id="calHint">Click two points to draw a fence line.</span>
+              <input id="calName" class="input-sm" placeholder="Name" value="Fence Line">
+              <select id="calDir" class="input-sm" title="Which crossing direction raises an alert"><option value="a_to_b">Alert: left/below to right/above</option><option value="b_to_a">Alert: right/above to left/below</option></select>
+              <button class="btn btn-ghost btn-sm" id="calClear" type="button">Clear</button>
+              <button class="btn btn-ghost btn-sm" id="calDefault" type="button">Restore default</button>
+              <button class="btn btn-accent btn-sm" id="calSave" type="button">Save</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<!-- Incident drawer -->
+<div class="drawer-scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer-head"><div><div class="muted small" id="dwKicker">Incident</div><h3 id="dwTitle">-</h3></div><button class="icon-btn" id="dwClose" type="button" aria-label="Close"><svg><use href="#i-x"/></svg></button></div>
+  <div class="drawer-body" id="dwBody"></div>
+</aside>
+
+<!-- Guided demo coach -->
+<div class="coach" id="coach" hidden>
+  <div class="coach-top"><span class="coach-step" id="coachStep">1 / 9</span><button class="icon-btn" id="coachClose" type="button" aria-label="End tour"><svg><use href="#i-x"/></svg></button></div>
+  <h4 id="coachTitle"></h4><p id="coachText"></p>
+  <div class="coach-actions"><button class="btn btn-ghost btn-sm" id="coachPrev" type="button">Back</button><button class="btn btn-accent btn-sm" id="coachNext" type="button">Next</button></div>
+</div>
+
+<div class="toasts" id="toasts"></div>
+
+<!-- API key gate (only shown if the default demo key is rejected) -->
+<div class="gate" id="gate" hidden>
+  <form class="gate-card" id="gateForm">
+    <svg class="brand-mark big"><use href="#i-shield"/></svg>
+    <h3>IBVAP access key</h3><p class="muted small">This server uses a custom API key (IBVAP_API_KEY).</p>
+    <input type="password" id="gateKey" placeholder="API key" autocomplete="off">
+    <button class="btn btn-accent btn-block" type="submit">Unlock</button>
+    <div class="err small" id="gateErr"></div>
+  </form>
+</div>
+
+<script type="module" src="/static/js/app.js"></script>
+</body>
+</html>
